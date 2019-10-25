@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import styled, { ThemeProvider } from "styled-components";
+import Heading from "./components/Heading";
+import theme from "./styles/theme";
+import Listings from "./components/Listings";
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ThemeProvider theme={theme}>
+        <Header>
+          <Heading size="m" letterSpacing="wide">
+            The Plant Store
+          </Heading>
+          <Listings />
+        </Header>
+      </ThemeProvider>
     </div>
   );
-}
+};
+
+const Header = styled("header")`
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid ${({ theme }) => theme.colors.borderGrey};
+`;
 
 export default App;
