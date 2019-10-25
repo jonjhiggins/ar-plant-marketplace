@@ -6,3 +6,10 @@ export interface StyleSizes {
   l?: string;
   xl?: string;
 }
+
+export interface Listing {
+  category: string;
+  name: string;
+  image: string;
+  url: string;
+}

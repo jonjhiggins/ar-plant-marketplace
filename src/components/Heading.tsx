@@ -25,6 +25,12 @@ const Heading = styled.span<Props>`
   letter-spacing: ${({ letterSpacing }) =>
     letterSpacing ? spacing[letterSpacing] : spacing["semiWide"]};
   line-height: 1.25;
+
+  & > a,
+  & > a:visited {
+    text-decoration: none;
+    color: inherit;
+  }
 `;
 
 export default Heading;

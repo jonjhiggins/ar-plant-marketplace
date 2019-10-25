@@ -1,17 +1,18 @@
 import React from "react";
 import styled from "styled-components";
-import Heading from "./Heading";
 import Listing from "./Listing";
+import { listings } from "../data";
 
 export default function Listings() {
   return (
     <ListingsWrapper>
-      <Heading size="m">Listings</Heading>
-      <Listing />
+      {listings.map((listing, index) => (
+        <Listing key={index} listing={listing} />
+      ))}
     </ListingsWrapper>
   );
 }
 
 const ListingsWrapper = styled("div")`
-  border: 1px solid;
+  padding: 30px;
 `;

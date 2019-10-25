@@ -1,15 +1,25 @@
 import React from "react";
 import styled from "styled-components";
 import Heading from "./Heading";
+import { Listing as ListingType } from "../types";
+import { Link } from "react-router-dom";
 
-export default function Listing() {
+interface Props {
+  listing: ListingType;
+}
+
+export default function Listing({ listing: { category, url } }: Props) {
   return (
-    <ListingWrapper>
-      <Heading size="m">Listing</Heading>
+    <ListingWrapper to={`/${url}`}>
+      <Heading size="l" as="h3" preLine={true}>
+        {category}
+      </Heading>
     </ListingWrapper>
   );
 }
 
-const ListingWrapper = styled("div")`
-  border: 1px solid;
+const ListingWrapper = styled(Link)`
+  display: block;
+  color: inherit;
+  text-decoration: none;
 `;
