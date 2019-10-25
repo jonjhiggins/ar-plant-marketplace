@@ -24,9 +24,9 @@ const App: React.FC = () => {
                 <Listings />
               </Route>
               {listings.map((listing, index) => {
-                const { url, category } = listing;
+                const { url } = listing;
                 return (
-                  <Route path={`/${url}`}>
+                  <Route path={`/${url}`} key={index}>
                     <ListingFull listing={listing} />
                   </Route>
                 );
@@ -44,7 +44,7 @@ const Header = styled("header")`
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid ${({ theme }) => theme.colors.borderGrey};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.borderGrey};
 `;
 
 export default App;

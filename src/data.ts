@@ -4,19 +4,20 @@ export const listings: Listing[] = [
   {
     category: "Compact\nrosette",
     name: "Echeveria",
-    image: "",
+    image: "compact-rosette",
     url: "compact-rosette"
   },
   {
     category: "Climbing\nplants",
     name: "Hoya",
-    image: "",
+    image: "climbing",
     url: "climbing-plants"
   },
   {
     category: "Trailing\nplants",
     name: "String of hearts",
-    image: "",
-    url: "string-of-hearts"
+    image: "trailing",
+    url: "string-of-hearts",
+    darkText: true
   }
 ];

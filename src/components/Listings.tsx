@@ -7,7 +7,7 @@ export default function Listings() {
   return (
     <ListingsWrapper>
       {listings.map((listing, index) => (
-        <Listing key={index} listing={listing} />
+        <Listing key={index} listing={listing} squareLayout={index % 2 === 0} />
       ))}
     </ListingsWrapper>
   );

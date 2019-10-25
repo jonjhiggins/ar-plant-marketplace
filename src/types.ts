@@ -12,4 +12,5 @@ export interface Listing {
   name: string;
   image: string;
   url: string;
+  darkText?: boolean;
 }

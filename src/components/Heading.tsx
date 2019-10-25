@@ -1,12 +1,13 @@
 import styled from "styled-components";
 
 interface Props {
-  centered?: boolean;
+  align?: "left" | "center" | "right";
   size: string;
   weight?: "normal" | "bold";
   preLine?: boolean;
   toLower?: boolean;
   letterSpacing?: "wide" | "semiWide" | "normal";
+  color?: "black" | "white";
 }
 
 const spacing = {
@@ -16,11 +17,12 @@ const spacing = {
 };
 
 const Heading = styled.span<Props>`
-  color: ${({ theme }) => theme.colors.bodyText};
+  color: ${({ theme, color }) =>
+    color === "white" ? theme.colors.white : theme.colors.bodyText};
   font-size: ${({ theme, size }) => theme.text[size]};
   font-weight: ${({ weight }) => (weight ? weight : "bold")};
   white-space: ${props => (props.preLine ? "pre-line" : "normal")};
-  text-align: ${({ centered }) => (centered ? "center" : "initial")};
+  text-align: ${({ align }) => (align ? align : "initial")};
   text-transform: ${({ toLower }) => (!toLower ? "uppercase" : "none")};
   letter-spacing: ${({ letterSpacing }) =>
     letterSpacing ? spacing[letterSpacing] : spacing["semiWide"]};
