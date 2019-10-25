@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { css } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import Heading from "./Heading";
 import { Listing as ListingType } from "../types";
 import { Link } from "react-router-dom";
@@ -7,20 +7,22 @@ import { Link } from "react-router-dom";
 interface Props {
   listing: ListingType;
   squareLayout: boolean;
+  index: number;
 }
 
 export default function Listing({
   listing: { category, url, image, darkText },
+  index,
   squareLayout
 }: Props) {
   return (
-    <ListingWrapper to={`/${url}`} squareLayout={squareLayout}>
+    <ListingWrapper to={`/${url}`} squareLayout={squareLayout} index={index}>
       <Inner squareLayout={squareLayout}>
         <Image
           src={`/images/${image}-1.png`}
           srcSet={`/images/${image}-1.png, /images/${image}.png 2x`}
         />
-        <Body squareLayout={squareLayout}>
+        <Body squareLayout={squareLayout} index={index}>
           <Heading
             size="xl"
             as="h3"
@@ -36,7 +38,17 @@ export default function Listing({
   );
 }
 
-const ListingWrapper = styled(Link)<{ squareLayout: boolean }>`
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+`;
+
+const ListingWrapper = styled(Link)<{ squareLayout: boolean; index: number }>`
   display: block;
   color: inherit;
   text-decoration: none;
@@ -45,6 +57,9 @@ const ListingWrapper = styled(Link)<{ squareLayout: boolean }>`
   margin: ${({ squareLayout }) =>
     squareLayout ? "0 0 0 auto" : "-15px -30px"};
   z-index: ${({ squareLayout }) => (squareLayout ? 1 : 0)};
+  opacity: 0;
+  animation: ${fadeIn} 800ms ease-out ${({ index }) => 100 + index * 500}ms
+    forwards;
 
   ${({ squareLayout }) =>
     squareLayout
@@ -77,7 +92,7 @@ const Image = styled("img")`
   object-fit: cover;
 `;
 
-const Body = styled("div")<{ squareLayout: boolean }>`
+const Body = styled("div")<{ squareLayout: boolean; index: number }>`
   position: absolute;
   top: 0;
   left: 0;
@@ -93,6 +108,9 @@ const Body = styled("div")<{ squareLayout: boolean }>`
       : null}
 
   & > h3 {
+    opacity: 0;
+    animation: ${fadeIn} 800ms ease-out ${({ index }) => 1600 + index * 500}ms
+      forwards;
     ${({ squareLayout }) =>
       squareLayout
         ? css`
