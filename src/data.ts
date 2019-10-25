@@ -5,6 +5,10 @@ export const listings: Listing[] = [
     category: "Compact\nrosette",
     name: "Echeveria",
     image: "compact-rosette",
+    imageFull: "rosette-full",
+    description:
+      "Low-growing plant which grows in a tight, circular, clustered arrangement. ",
+    greatFor: ["Geometric-style", "Office", "Creating pattern"],
     url: "compact-rosette"
   },
   {
