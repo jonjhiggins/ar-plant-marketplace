@@ -6,7 +6,7 @@ import React from "react";
 const styling = css`
   background-color: #fff;
   color: #000;
-  padding: 6px 18px;
+  padding: 12px;
   text-decoration: none;
   box-shadow: 3px 3px 0 #000;
   border: 1px solid;
@@ -29,7 +29,9 @@ const Icon = styled("img")`
 export default function CTA(props: any) {
   const middle = (
     <>
-      <Heading {...props}>{props.children}</Heading>
+      <Heading {...props} letterSpacing="cta">
+        {props.children}
+      </Heading>
       <Icon src="/images/ic-arrows-bottom.svg" alt="" />
     </>
   );

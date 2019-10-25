@@ -6,7 +6,7 @@ interface Props {
   weight?: "normal" | "bold";
   preLine?: boolean;
   toLower?: boolean;
-  letterSpacing?: "wide" | "semiWide" | "normal";
+  letterSpacing?: "wide" | "semiWide" | "cta" | "normal";
   color?: "black" | "white";
   italic?: boolean;
 }
@@ -14,7 +14,8 @@ interface Props {
 const spacing = {
   wide: "10px",
   semiWide: "5px",
-  normal: "1px"
+  normal: "1px",
+  cta: "3px"
 };
 
 const Heading = styled.span<Props>`

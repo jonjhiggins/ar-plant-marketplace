@@ -3,6 +3,7 @@ import styled, { css, keyframes } from "styled-components";
 import Heading from "./Heading";
 import { Listing as ListingType } from "../types";
 import { Link } from "react-router-dom";
+import CTA from "./CTA";
 
 interface Props {
   listing: ListingType;
@@ -32,6 +33,11 @@ export default function Listing({
           >
             {category}
           </Heading>
+          {!squareLayout && (
+            <CTA as="div" to={`/${url}`}>
+              Shop now
+            </CTA>
+          )}
         </Body>
       </Inner>
     </ListingWrapper>
@@ -98,19 +104,22 @@ const Body = styled("div")<{ squareLayout: boolean; index: number }>`
   left: 0;
   width: 100%;
   height: 100%;
+  opacity: 0;
+  animation: ${fadeIn} 300ms ease-out ${({ index }) => 1700 + index * 500}ms
+    forwards;
 
   ${({ squareLayout }) =>
     !squareLayout
       ? css`
           display: flex;
           align-items: center;
+          justify-content: space-between;
+          padding: 0 30px;
+          box-sizing: border-box;
         `
       : null}
 
   & > h3 {
-    opacity: 0;
-    animation: ${fadeIn} 800ms ease-out ${({ index }) => 1600 + index * 500}ms
-      forwards;
     ${({ squareLayout }) =>
       squareLayout
         ? css`
@@ -121,7 +130,7 @@ const Body = styled("div")<{ squareLayout: boolean; index: number }>`
             line-height: 1;
           `
         : css`
-            margin: 0 0 0 30px;
+            margin: 0;
             text-align: left;
           `}
   }
