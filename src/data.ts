@@ -23,5 +23,20 @@ export const listings: Listing[] = [
     image: "trailing",
     url: "string-of-hearts",
     darkText: true
+  },
+  {
+    category: "Flowering\nplants",
+    name: "Orchid",
+    image: "flowering",
+    url: "flowering"
+  },
+  {
+    category: "Leafy\nfoliage",
+    name: "Dragon trees",
+    image: "leafy",
+    description:
+      "Strikingly architectural plants produce lance to strap-shaped, glossy leaves",
+    greatFor: ["Architectural-style", "Office", "Adding colour"],
+    url: "leafy"
   }
 ];
